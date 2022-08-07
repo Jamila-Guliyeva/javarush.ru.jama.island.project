@@ -17,7 +17,7 @@ public abstract class Inhabitant {
         public void eat(Cell cell) {
         }
 
-    public void moove(Cell cell){}
+        public void move(Cell cell){}
 
         public Inhabitant(Parameters parameters) {
             this.name = parameters.getName();

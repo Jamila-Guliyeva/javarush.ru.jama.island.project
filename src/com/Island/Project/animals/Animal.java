@@ -5,8 +5,7 @@ import com.Island.Project.animals.predators.*;
 import com.Island.Project.constants.Parameters;
 import com.Island.Project.settings.Cell;
 
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Animal extends Inhabitant {
@@ -25,8 +24,18 @@ public class Animal extends Inhabitant {
     }
 
 
-//    public Animal breed(Animal animal){
+//    public Animal breed(Cell cell){
 //
+//        Map<OrganismsList, List<? extends Inhabitant>> map = cell.organismsMap;
+//        int counter;
+//        List<? extends Inhabitant> copyList = map.get(OrganismsList.FOX);
+//        if (copyList.size() >= 2){
+//            int posibility = ThreadLocalRandom.current().nextInt(0, 1);
+//            int temp = copyList.size() / 2;
+//            if ((temp >=1) && (posibility == 1)){
+//
+//            }
+//        }
 //
 //    }
 
@@ -111,7 +120,7 @@ public class Animal extends Inhabitant {
     }
 
 
-    public void moove(Cell cell){
+    public void move(Cell cell){
 
     Cell newCell = findNextPosition(cell);
 

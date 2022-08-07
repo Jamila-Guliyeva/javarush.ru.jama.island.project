@@ -18,13 +18,6 @@ public class Runner {
         islandMap.setLife();
         islandMap.printInfo();
 
-        List<? extends Inhabitant> set = islandMap.map[1][1].organismsMap.get(OrganismsList.FOX);
-
-        for (int i = 0; i < set.size(); i++) {
-            set.get(i).eat(islandMap.map[1][1]);
-
-        }
-        //System.out.println(set.get(1) instanceof Predator);
     }
     }
 
