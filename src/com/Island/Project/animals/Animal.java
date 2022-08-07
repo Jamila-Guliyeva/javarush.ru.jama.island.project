@@ -5,6 +5,7 @@ import com.Island.Project.animals.predators.*;
 import com.Island.Project.constants.Parameters;
 import com.Island.Project.settings.Cell;
 
+import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -108,17 +109,92 @@ public class Animal extends Inhabitant {
 
         }
     }
+
+
+    public void moove(Cell cell){
+
+    Cell newCell = findNextPosition(cell);
+
+    if (this instanceof Boar) {
+        cell.organismsMap.get(OrganismsList.BOAR).remove(this);
+        List<Animal> animals = (List<Animal>)newCell.organismsMap.get(OrganismsList.BEAR);
+        animals.add(this);
+    }
+        if (this instanceof Buffalo) {
+            cell.organismsMap.get(OrganismsList.BUFFALO).remove(this);
+            List<Animal> animals = (List<Animal>)newCell.organismsMap.get(OrganismsList.BUFFALO);
+            animals.add(this);
+        }
+        if (this instanceof Caterpillar) {
+            cell.organismsMap.get(OrganismsList.CATERPILLAR).remove(this);
+            List<Animal> animals = (List<Animal>)newCell.organismsMap.get(OrganismsList.CATERPILLAR);
+            animals.add(this);
+        }
+        if (this instanceof Deer) {
+            cell.organismsMap.get(OrganismsList.DEER).remove(this);
+            List<Animal> animals = (List<Animal>)newCell.organismsMap.get(OrganismsList.DEER);
+            animals.add(this);
+        }
+        if (this instanceof Duck) {
+            cell.organismsMap.get(OrganismsList.DUCK).remove(this);
+            List<Animal> animals = (List<Animal>)newCell.organismsMap.get(OrganismsList.DUCK);
+            animals.add(this);
+        }
+        if (this instanceof Goat) {
+            cell.organismsMap.get(OrganismsList.GOAT).remove(this);
+            List<Animal> animals = (List<Animal>)newCell.organismsMap.get(OrganismsList.GOAT);
+            animals.add(this);
+        }
+        if (this instanceof Horse) {
+            cell.organismsMap.get(OrganismsList.HORSE).remove(this);
+            List<Animal> animals = (List<Animal>)newCell.organismsMap.get(OrganismsList.HORSE);
+            animals.add(this);
+        }
+        if (this instanceof Mouse) {
+            cell.organismsMap.get(OrganismsList.MOUSE).remove(this);
+            List<Animal> animals = (List<Animal>)newCell.organismsMap.get(OrganismsList.MOUSE);
+            animals.add(this);
+        }
+        if (this instanceof Rabbit) {
+            cell.organismsMap.get(OrganismsList.RABBIT).remove(this);
+            List<Animal> animals = (List<Animal>)newCell.organismsMap.get(OrganismsList.RABBIT);
+            animals.add(this);
+        }
+        if (this instanceof Sheep) {
+            cell.organismsMap.get(OrganismsList.SHEEP).remove(this);
+            List<Animal> animals = (List<Animal>)newCell.organismsMap.get(OrganismsList.SHEEP);
+            animals.add(this);
+        }
+        if (this instanceof Bear) {
+            cell.organismsMap.get(OrganismsList.BEAR).remove(this);
+            List<Animal> animals = (List<Animal>)newCell.organismsMap.get(OrganismsList.BEAR);
+            animals.add(this);
+        }
+        if (this instanceof Boa) {
+            cell.organismsMap.get(OrganismsList.BOA).remove(this);
+            List<Animal> animals = (List<Animal>)newCell.organismsMap.get(OrganismsList.BOA);
+            animals.add(this);
+        }
+        if (this instanceof Eagle) {
+            cell.organismsMap.get(OrganismsList.EAGLE).remove(this);
+            List<Animal> animals = (List<Animal>)newCell.organismsMap.get(OrganismsList.EAGLE);
+            animals.add(this);
+        }
+        if (this instanceof Fox) {
+            cell.organismsMap.get(OrganismsList.FOX).remove(this);
+            List<Animal> animals = (List<Animal>)newCell.organismsMap.get(OrganismsList.FOX);
+            animals.add(this);
+        }
+        if (this instanceof Wolf) {
+            cell.organismsMap.get(OrganismsList.WOLF).remove(this);
+            List<Animal> animals = (List<Animal>)newCell.organismsMap.get(OrganismsList.WOLF);
+            animals.add(this);
+        }
+        else return;
+
+    }
 }
 
-//    public void moove(Cell cell){
-//        Cell cellToGo = findNextPosition(cell);
-//        cell.organismsMap.get(OrganismsList.(this.getClass().getSimpleName().toUpperCase()))
-//
-//
-//
-//    }
-//}
-//
 
 
     //private Parameters parameters;

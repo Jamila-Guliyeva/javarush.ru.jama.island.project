@@ -5,6 +5,7 @@ import com.Island.Project.animals.Inhabitant;
 import com.Island.Project.animals.OrganismsList;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -13,7 +14,7 @@ public class Cell {
     private int row;
     private int column;
 
-    public Map<OrganismsList, Set<Inhabitant>> organismsMap = new HashMap<>();
+    public Map<OrganismsList, List<? extends Inhabitant>> organismsMap = new HashMap<>();
 
     public void calculate(){
 //

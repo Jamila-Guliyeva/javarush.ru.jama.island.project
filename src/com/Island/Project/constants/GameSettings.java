@@ -20,7 +20,7 @@ public class GameSettings {
         parameters.put(OrganismsList.BEAR, new Parameters("Bear", 500, 510, 580, 5, 2, 80, "\uD83D\uDC3B"));
         parameters.put(OrganismsList.BOA, new Parameters("Boa", 15, 16,18, 30, 1, 2, "\uD83D\uDC0D"));
         parameters.put(OrganismsList.EAGLE, new Parameters("Eagle", 6, 6.5,7, 20, 3, 1, "\uD83E\uDD85"));
-        parameters.put(OrganismsList.FOX, new Parameters("Fox", 8, 9, 10, 30, 2, 2, "\uD83E\uDD85"));
+        parameters.put(OrganismsList.FOX, new Parameters("Fox", 8, 9, 10, 30, 2, 2, "\uD83E\uDD8A"));
         parameters.put(OrganismsList.WOLF, new Parameters("Wolf", 50, 53, 58, 30, 3, 8, "\uD83D\uDC3A"));
         parameters.put(OrganismsList.BOAR, new Parameters("Boar", 400, 410,  450, 3, 2, 50,  "\uD83D\uDC17"));
         parameters.put(OrganismsList.BUFFALO, new Parameters("Buffalo", 700, 750, 800, 10, 3, 100, "\uD83D\uDC03"));

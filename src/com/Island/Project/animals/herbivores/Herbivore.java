@@ -7,6 +7,7 @@ import com.Island.Project.plants.Plant;
 import com.Island.Project.settings.Cell;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
@@ -18,11 +19,11 @@ public class Herbivore extends Animal {
 
     public void eat(Cell cell) {
         int boarFood = ThreadLocalRandom.current().nextInt(0, 100);
-        Iterator<Map.Entry<OrganismsList, Set<Inhabitant>>> organismsListSetIterator = cell.organismsMap.entrySet().iterator();
+        Iterator<Map.Entry<OrganismsList, List<? extends Inhabitant>>> organismsListSetIterator = cell.organismsMap.entrySet().iterator();
         while (organismsListSetIterator.hasNext()) {
-            Map.Entry<OrganismsList, Set<Inhabitant>> temp = organismsListSetIterator.next();
-            Set<Inhabitant> animalSet = temp.getValue();
-            Iterator<Inhabitant> iterator = animalSet.iterator();
+            Map.Entry<OrganismsList, List<? extends Inhabitant>> temp = organismsListSetIterator.next();
+            List<? extends Inhabitant> animalSet = temp.getValue();
+            Iterator<? extends Inhabitant> iterator = animalSet.iterator();
             while (iterator.hasNext()) {
                 if (iterator.next() instanceof Plant && boarFood <= 100) {
                     if ((this.getCurrentWeight() + iterator.next().getCurrentWeight()) <= this.getMaxWeight()) {

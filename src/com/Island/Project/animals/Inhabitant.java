@@ -100,5 +100,6 @@ public abstract class Inhabitant {
         }
 
 
-    }
+         public abstract Cell findNextPosition(Cell cell);
+}
 

@@ -16,7 +16,7 @@ import java.util.prefs.Preferences;
 public class IslandMap {
     Coordinates coordinates;
     //public static Cell cell;
-    public Cell[][] map = new Cell[3][3];
+    public Cell[][] map = new Cell[5][5];
 
     public void initialize(){
         for (int i = 0; i < map.length; i++) {
@@ -32,7 +32,7 @@ public class IslandMap {
             for (int j = 0; j < map[i].length; j++) {
                 int number = ThreadLocalRandom.current().nextInt
                         (0, GameSettings.getInstance().getParameters().get(OrganismsList.BEAR).getMaxNumber());
-                Set<Inhabitant> set = new HashSet<>();
+                List<Inhabitant> set = new ArrayList<>();
                 for (int k = 0; k < number; k++) {
                 set.add(new Bear(GameSettings.getInstance().getParameters().get(OrganismsList.BEAR)));
                 }
@@ -41,7 +41,7 @@ public class IslandMap {
 
                 number = ThreadLocalRandom.current().nextInt
                         (0, GameSettings.getInstance().getParameters().get(OrganismsList.BOA).getMaxNumber());
-                set = new HashSet<>();
+                set = new ArrayList<>();
                 for (int k = 0; k < number; k++) {
                     set.add(new Boa(GameSettings.getInstance().getParameters().get(OrganismsList.BOA)));
                 }
@@ -49,7 +49,7 @@ public class IslandMap {
 
                 number = ThreadLocalRandom.current().nextInt
                         (0, GameSettings.getInstance().getParameters().get(OrganismsList.EAGLE).getMaxNumber());
-                set = new HashSet<>();
+                set = new ArrayList<>();
                 for (int k = 0; k < number; k++) {
                     set.add(new Eagle(GameSettings.getInstance().getParameters().get(OrganismsList.EAGLE)));
                 }
@@ -57,7 +57,7 @@ public class IslandMap {
 
                 number = ThreadLocalRandom.current().nextInt
                         (0, GameSettings.getInstance().getParameters().get(OrganismsList.FOX).getMaxNumber());
-                set = new HashSet<>();
+                set = new ArrayList<>();
                 for (int k = 0; k < number; k++) {
                     set.add(new Fox(GameSettings.getInstance().getParameters().get(OrganismsList.FOX)));
                 }
@@ -65,15 +65,14 @@ public class IslandMap {
 
                 number = ThreadLocalRandom.current().nextInt
                         (0, GameSettings.getInstance().getParameters().get(OrganismsList.WOLF).getMaxNumber());
-                set = new HashSet<>();
-                for (int k = 0; k < number; k++) {
+                set = new ArrayList<>();                for (int k = 0; k < number; k++) {
                     set.add(new Wolf(GameSettings.getInstance().getParameters().get(OrganismsList.WOLF)));
                 }
                 map[i][j].organismsMap.put(OrganismsList.WOLF, set);
 
                 number = ThreadLocalRandom.current().nextInt
                         (0, GameSettings.getInstance().getParameters().get(OrganismsList.BOAR).getMaxNumber());
-                set = new HashSet<>();
+                set = new ArrayList<>();
                 for (int k = 0; k < number; k++) {
                     set.add(new Bear(GameSettings.getInstance().getParameters().get(OrganismsList.BOAR)));
                 }
@@ -81,7 +80,7 @@ public class IslandMap {
 
                 number = ThreadLocalRandom.current().nextInt
                         (0, GameSettings.getInstance().getParameters().get(OrganismsList.BUFFALO).getMaxNumber());
-                set = new HashSet<>();
+                set = new ArrayList<>();
                 for (int k = 0; k < number; k++) {
                     set.add(new Buffalo(GameSettings.getInstance().getParameters().get(OrganismsList.BUFFALO)));
                 }
@@ -90,7 +89,7 @@ public class IslandMap {
 
                 number = ThreadLocalRandom.current().nextInt
                         (0, GameSettings.getInstance().getParameters().get(OrganismsList.CATERPILLAR).getMaxNumber());
-                set = new HashSet<>();
+                set = new ArrayList<>();
                 for (int k = 0; k < number; k++) {
                     set.add(new Caterpillar(GameSettings.getInstance().getParameters().get(OrganismsList.CATERPILLAR)));
                 }
@@ -99,7 +98,7 @@ public class IslandMap {
 
                 number = ThreadLocalRandom.current().nextInt
                         (0, GameSettings.getInstance().getParameters().get(OrganismsList.DEER).getMaxNumber());
-                set = new HashSet<>();
+                set = new ArrayList<>();
                 for (int k = 0; k < number; k++) {
                     set.add(new Deer(GameSettings.getInstance().getParameters().get(OrganismsList.DEER)));
                 }
@@ -107,7 +106,7 @@ public class IslandMap {
 
                 number = ThreadLocalRandom.current().nextInt
                         (0, GameSettings.getInstance().getParameters().get(OrganismsList.DUCK).getMaxNumber());
-                set = new HashSet<>();
+                set = new ArrayList<>();
                 for (int k = 0; k < number; k++) {
                     set.add(new Duck(GameSettings.getInstance().getParameters().get(OrganismsList.DUCK)));
                 }
@@ -115,7 +114,7 @@ public class IslandMap {
 
                 number = ThreadLocalRandom.current().nextInt
                         (0, GameSettings.getInstance().getParameters().get(OrganismsList.GOAT).getMaxNumber());
-                set = new HashSet<>();
+                set = new ArrayList<>();
                 for (int k = 0; k < number; k++) {
                     set.add(new Goat(GameSettings.getInstance().getParameters().get(OrganismsList.GOAT)));
                 }
@@ -123,7 +122,7 @@ public class IslandMap {
 
                 number = ThreadLocalRandom.current().nextInt
                         (0, GameSettings.getInstance().getParameters().get(OrganismsList.HORSE).getMaxNumber());
-                set = new HashSet<>();
+                set = new ArrayList<>();
                 for (int k = 0; k < number; k++) {
                     set.add(new Horse(GameSettings.getInstance().getParameters().get(OrganismsList.HORSE)));
                 }
@@ -131,7 +130,7 @@ public class IslandMap {
 
                 number = ThreadLocalRandom.current().nextInt
                         (0, GameSettings.getInstance().getParameters().get(OrganismsList.MOUSE).getMaxNumber());
-                set = new HashSet<>();
+                set = new ArrayList<>();
                 for (int k = 0; k < number; k++) {
                     set.add(new Mouse(GameSettings.getInstance().getParameters().get(OrganismsList.MOUSE)));
                 }
@@ -139,7 +138,7 @@ public class IslandMap {
 
                 number = ThreadLocalRandom.current().nextInt
                         (0, GameSettings.getInstance().getParameters().get(OrganismsList.RABBIT).getMaxNumber());
-                set = new HashSet<>();
+                set = new ArrayList<>();
                 for (int k = 0; k < number; k++) {
                     set.add(new Rabbit(GameSettings.getInstance().getParameters().get(OrganismsList.RABBIT)));
                 }
@@ -147,7 +146,7 @@ public class IslandMap {
 
                 number = ThreadLocalRandom.current().nextInt
                         (0, GameSettings.getInstance().getParameters().get(OrganismsList.SHEEP).getMaxNumber());
-                set = new HashSet<>();
+                set = new ArrayList<>();
                 for (int k = 0; k < number; k++) {
                     set.add(new Sheep(GameSettings.getInstance().getParameters().get(OrganismsList.SHEEP)));
                 }
@@ -170,7 +169,7 @@ public class IslandMap {
         for (Cell[] row : map) {
             for (Cell cell : row) {
                 System.out.print("|\t");
-                Map<OrganismsList, Set<Inhabitant>> organismsMap = cell.organismsMap;
+                Map<OrganismsList, List<? extends Inhabitant>> organismsMap = cell.organismsMap;
                 organismsMap.values()
                         .stream()
                         .filter(s -> s.size() > 0)
@@ -193,8 +192,8 @@ public class IslandMap {
 
         for (Cell[] row : map) {
             for (Cell cell : row) {
-                Map<OrganismsList, Set<Inhabitant>> organisms = cell.organismsMap;
-                for (Map.Entry<OrganismsList, Set<Inhabitant>> organism : organisms.entrySet()) {
+                Map<OrganismsList, List<? extends Inhabitant>> organisms = cell.organismsMap;
+                for (Map.Entry<OrganismsList, List<? extends Inhabitant>> organism : organisms.entrySet()) {
                     organismQuantities.put(organism.getKey(), organism.getValue().size());
                 }
             }
