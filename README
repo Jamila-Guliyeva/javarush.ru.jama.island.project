@@ -1,0 +1,16 @@
+This application represents the Island model with different kind oh inhabitants. All the inhabitants are split into
+three groups: predators (Bear, Boa, Eagle, Fox, Wolf), herbivores (Boar, Buffalo, Caterpillar, Deer, Duck, Goat,
+Horse, Mouse, Rabbit, Sheep) and plants.
+
+The island model includes a number of locations (cells), each sell has it's own inhabitants.
+While start of the program each cell gets the random number of random types of inhabitants.
+After each tact following actions are took place:
+ - all animals try to eat (if the current location has any food of them);
+ - all animals try to breed (in case if the location has the same type of animal);
+ - all animals (survived) try to move (sometimes they stay at the same location if "Random speed value" is 0);
+
+ Animals and plants could be eaten, animals could die of hunger (in case if the current Cell doesn't contain any
+ type of objects which could be considered as food).
+
+ After each tact we get the Statistics Report, which represents the data about current number of Island inhabitants -
+ "The icon of inhabitant" - "Current number of inhabitants".
