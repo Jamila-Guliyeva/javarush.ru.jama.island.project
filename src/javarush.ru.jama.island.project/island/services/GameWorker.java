@@ -60,7 +60,7 @@ public class GameWorker extends Thread {
             System.out.println("The game is already finished");
         }
         //
-        System.out.println("The game is over by timeout");
+        System.out.println("GAME OVER");
         System.exit(1);
     }
 

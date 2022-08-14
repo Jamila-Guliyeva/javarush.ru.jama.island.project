@@ -23,6 +23,6 @@ public class Satistics {
                 System.out.printf("%0" + rowNumber + "d/%0" + colNumber + "d    %s\n", i + 1, j + 1, areas[i][j]);
             }
         }
-        System.out.println("=".repeat(200));
+        System.out.println(".=.".repeat(37));
     }
 }

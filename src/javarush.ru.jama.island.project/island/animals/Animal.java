@@ -28,7 +28,7 @@ public abstract class Animal extends Inhabitant {
             int sameAnimalTypeQuantity = area.getInhabitants().get(this.getType()).toArray().length;
             int childrenQuantity = this.getChildQuantity(area);
 
-            if (childrenQuantity > 0 && sameAnimalTypeQuantity > 1 && Randomizer.getProbability(50)) {
+            if (childrenQuantity > 0 && sameAnimalTypeQuantity > 1 && Randomizer.getProbability(70)) {
                 for (int i = 0; i < childrenQuantity; i++) {
                     if (Randomizer.getProbability(90)) {
                         Inhabitant newAnimal = Factories.createOrganismByType(OrganismsList.valueOf(this.getType().toString().toUpperCase(Locale.ROOT)));
