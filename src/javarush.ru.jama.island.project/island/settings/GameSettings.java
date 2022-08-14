@@ -10,9 +10,7 @@ import java.util.*;
 public class GameSettings {
 
     private static final String INIT_FILE = "javarush.ru.jama.island.project/island/file.yml";
-
     private static volatile GameSettings SETTINGS;
-
     private int mapRows;
     private int mapCols;
     private int cycleDuration;
@@ -38,7 +36,7 @@ public class GameSettings {
 
             organismsTypes = new ArrayList<>(organismsParameters.keySet());
         } catch (IOException e) {
-            System.out.printf("Ошибка при чтении файла настроек init.yml: %s", e);
+            System.out.printf("File access error: %s", e);
         }
     }
 

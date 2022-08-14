@@ -5,8 +5,4 @@ import javarush.ru.jama.island.project.island.location.Cell;
 
 public class Wolf extends Predator implements Movable {
 
-    @Override
-    public void move(Cell cell) {
-
-    }
 }
