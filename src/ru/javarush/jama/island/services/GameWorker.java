@@ -1,6 +1,6 @@
 package ru.javarush.jama.island.services;
 
-import ru.javarush.jama.island.entity.OrganismsList;
+import ru.javarush.jama.island.entity.OrganismsType;
 import ru.javarush.jama.island.settings.GameSettings;
 import ru.javarush.jama.island.settings.Satistics;
 import java.util.ArrayList;
@@ -13,9 +13,9 @@ public class GameWorker extends Thread {
 
     private final Satistics game;
 
-    private final long LIFE_CYCLE_DURATION = GameSettings.get().getCycleDuration();
-    private final Boolean STOP_ON_TIMEOUT = GameSettings.get().getStopOnTimeout();
-    private final int GAME_DURATION = GameSettings.get().getGameDuration();
+    private final long lifeCycleDuration = GameSettings.get().getCycleDuration();
+    private final Boolean stopOnTimeout = GameSettings.get().getStopOnTimeout();
+    private final int gameDuration = GameSettings.get().getGameDuration();
 
     public GameWorker(Satistics game) {
         this.game = game;
@@ -25,14 +25,14 @@ public class GameWorker extends Thread {
     public void run() {
         game.showStatistics();
         ScheduledExecutorService gameScheduledThreadPool = Executors.newScheduledThreadPool(4);
-        gameScheduledThreadPool.scheduleWithFixedDelay(this::runAndWaitOrganismWorkers, LIFE_CYCLE_DURATION, LIFE_CYCLE_DURATION, TimeUnit.MILLISECONDS);
+        gameScheduledThreadPool.scheduleWithFixedDelay(this::runAndWaitOrganismWorkers, lifeCycleDuration, lifeCycleDuration, TimeUnit.MILLISECONDS);
 
-        if (STOP_ON_TIMEOUT) runTimer();
+        if (stopOnTimeout) runTimer();
     }
 
     private void runAndWaitOrganismWorkers() {
         ArrayList<OrganismWorker> organismWorkers = new ArrayList<>();
-        for (OrganismsList organismType : GameSettings.get().getOrganismsTypes()) {
+        for (OrganismsType organismType : GameSettings.get().getOrganismsTypes()) {
             organismWorkers.add(new OrganismWorker(organismType, game.getIslandMap()));
         }
         int poolSize = 4;
@@ -53,7 +53,7 @@ public class GameWorker extends Thread {
 
     private void runTimer() {
         try {
-            Thread.sleep(GAME_DURATION);
+            Thread.sleep(gameDuration);
         } catch (InterruptedException e) {
             System.out.println("The game is already finished");
         }

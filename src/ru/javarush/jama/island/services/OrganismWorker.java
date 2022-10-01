@@ -1,7 +1,7 @@
 package ru.javarush.jama.island.services;
 
 import ru.javarush.jama.island.entity.Inhabitant;
-import ru.javarush.jama.island.entity.OrganismsList;
+import ru.javarush.jama.island.entity.OrganismsType;
 import ru.javarush.jama.island.location.Cell;
 import ru.javarush.jama.island.location.IslandMap;
 import java.util.Queue;
@@ -10,11 +10,11 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class OrganismWorker implements Runnable {
 
-    private final OrganismsList organismType;
+    private final OrganismsType organismType;
     private final IslandMap islandMap;
     private final Queue<Task> tasks = new ConcurrentLinkedQueue<>();
 
-    public OrganismWorker(OrganismsList organismType, IslandMap islandMap) {
+    public OrganismWorker(OrganismsType organismType, IslandMap islandMap) {
         this.organismType = organismType;
         this.islandMap = islandMap;
     }

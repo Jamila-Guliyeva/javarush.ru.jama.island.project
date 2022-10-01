@@ -1,6 +1,6 @@
 package ru.javarush.jama.island.entity;
 
-public enum OrganismsList {
+public enum OrganismsType {
     PLANT,
     BOAR,
     BUFFALO,

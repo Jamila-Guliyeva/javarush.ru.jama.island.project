@@ -1,7 +1,7 @@
 package ru.javarush.jama.island.plants;
 
 import ru.javarush.jama.island.entity.Inhabitant;
-import ru.javarush.jama.island.entity.OrganismsList;
+import ru.javarush.jama.island.entity.OrganismsType;
 import ru.javarush.jama.island.entity.factories.Factories;
 import ru.javarush.jama.island.location.Cell;
 import ru.javarush.jama.island.settings.GameSettings;
@@ -22,17 +22,21 @@ public class Plant extends Inhabitant {
     private void safeMultiply(Cell area) {
         area.getLock().lock();
         try {
-            int newPlantsQuantity = this.getChildQuantity(area);
-            if (newPlantsQuantity > 0) {
-                for (int i = 0; i < newPlantsQuantity; i++) {
-                    if (Randomizer.getProbability(5)) {
-                        Inhabitant newPlant = Factories.createOrganismByType(OrganismsList.valueOf(this.getType().toString().toUpperCase(Locale.ROOT)));
-                        area.addInhabitant(this.getType(), newPlant);
-                    }
-                }
-            }
+        newPlant(area);
         } finally {
             area.getLock().unlock();
+        }
+    }
+
+    private void newPlant(Cell area){
+        int newPlantsQuantity = this.getChildQuantity(area);
+        if (newPlantsQuantity > 0) {
+            for (int i = 0; i < newPlantsQuantity; i++) {
+                if (Randomizer.getProbability(5)) {
+                    Inhabitant newPlant = Factories.createOrganismByType(OrganismsType.valueOf(this.getType().toString().toUpperCase(Locale.ROOT)));
+                    area.addInhabitant(this.getType(), newPlant);
+                }
+            }
         }
     }
 

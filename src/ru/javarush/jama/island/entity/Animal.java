@@ -28,7 +28,7 @@ public abstract class Animal extends Inhabitant {
             if (childrenQuantity > 0 && sameAnimalTypeQuantity > 1 && Randomizer.getProbability(70)) {
                 for (int i = 0; i < childrenQuantity; i++) {
                     if (Randomizer.getProbability(90)) {
-                        Inhabitant newAnimal = Factories.createOrganismByType(OrganismsList.valueOf(this.getType().toString().toUpperCase(Locale.ROOT)));
+                        Inhabitant newAnimal = Factories.createOrganismByType(OrganismsType.valueOf(this.getType().toString().toUpperCase(Locale.ROOT)));
                         area.addInhabitant(this.getType(), newAnimal);
                     }
                 }
@@ -53,41 +53,47 @@ public abstract class Animal extends Inhabitant {
             double weightDiff = animalCommonSpecs.getMaxWeight() - this.getWeight();
             double foodRequired = Math.min(weightDiff, animalCommonSpecs.getMaxFoodRequired());
             if (foodRequired > 0) {
-                Map<OrganismsList, Integer> chanceToGetEatMap = settings.getChanceToGetEat().get(this.getType());
-                Iterator<Map.Entry<OrganismsList, Integer>> chanceToGetEatIterator = chanceToGetEatMap.entrySet().iterator();
+                Map<OrganismsType, Integer> chanceToGetEatMap = settings.getChanceToGetEat().get(this.getType());
+                Iterator<Map.Entry<OrganismsType, Integer>> chanceToGetEatIterator = chanceToGetEatMap.entrySet().iterator();
                 while (foodRequired > 0 && chanceToGetEatIterator.hasNext()) {
-                    Map.Entry<OrganismsList, Integer> chanceToGetEat = chanceToGetEatIterator.next();
-                    OrganismsList foodType = chanceToGetEat.getKey();
+                    Map.Entry<OrganismsType, Integer> chanceToGetEat = chanceToGetEatIterator.next();
+                    OrganismsType foodType = chanceToGetEat.getKey();
                     Integer chanceToEat = chanceToGetEat.getValue();
 
                     Set<Inhabitant> foodSet = area.getInhabitants().get(foodType);
-                    if (Randomizer.getProbability(chanceToEat) && foodSet != null && !foodSet.isEmpty()) {
-                        Iterator<Inhabitant> foodIterator = foodSet.iterator();
-                        if (foodIterator.hasNext()) {
-                            Inhabitant food = foodIterator.next();
-                            double initialFoodWeight = food.getWeight();
-                            double mealWeight = Math.min(foodRequired, initialFoodWeight);
-                            foodRequired -= mealWeight;
-                            setWeight(getWeight() + mealWeight);
-                            food.setWeight(food.getWeight() - mealWeight);
-
-                            double currentFoodWeight = food.getWeight();
-                            if (currentFoodWeight < initialFoodWeight / settings.getUnviableWeightPercent()) { // съели целиком или до нежизнеспособного состояния
-                                foodIterator.remove();
-                            }
-
-                            ate = true;
-                            if (foodRequired <= 0) {
-                                break;
-                            }
-                        }
-                    }
+                    ate = doesAte(foodSet, chanceToEat, foodRequired, settings);
                 }
             }
         } finally {
             area.getLock().unlock();
         }
+        return ate;
+    }
 
+    private boolean doesAte(Set<Inhabitant> foodSet, Integer chanceToEat, double foodRequired, GameSettings settings) {
+
+        boolean ate = false;
+        if (Randomizer.getProbability(chanceToEat) && foodSet != null && !foodSet.isEmpty()) {
+            Iterator<Inhabitant> foodIterator = foodSet.iterator();
+            if (foodIterator.hasNext()) {
+                Inhabitant food = foodIterator.next();
+                double initialFoodWeight = food.getWeight();
+                double mealWeight = Math.min(foodRequired, initialFoodWeight);
+                foodRequired -= mealWeight;
+                setWeight(getWeight() + mealWeight);
+                food.setWeight(food.getWeight() - mealWeight);
+
+                double currentFoodWeight = food.getWeight();
+                if (currentFoodWeight < initialFoodWeight / settings.getUnviableWeightPercent()) { // съели целиком или до нежизнеспособного состояния
+                    foodIterator.remove();
+                }
+                ate = true;
+                if (foodRequired <= 0) {
+                    ate = false;
+                }
+            }
+            else ate = false;
+        }
         return ate;
     }
 
@@ -145,7 +151,6 @@ public abstract class Animal extends Inhabitant {
             return currentArea;
         }
     }
-
 
 }
 

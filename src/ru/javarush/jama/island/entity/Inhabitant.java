@@ -8,7 +8,7 @@ import ru.javarush.jama.island.util.Randomizer;
 import java.util.Locale;
 
 public abstract class Inhabitant {
-    private final OrganismsList type = OrganismsList.valueOf(this.getClass().getSimpleName().toUpperCase(Locale.ROOT));
+    private final OrganismsType type = OrganismsType.valueOf(this.getClass().getSimpleName().toUpperCase(Locale.ROOT));
 
     private double weight;
 
@@ -21,7 +21,7 @@ public abstract class Inhabitant {
         this.weight = Randomizer.getRandom(parameters.getMaxWeight() / 2.0D, parameters.getMaxWeight());
     }
 
-    public OrganismsList getType() {
+    public OrganismsType getType() {
         return type;
     }
 

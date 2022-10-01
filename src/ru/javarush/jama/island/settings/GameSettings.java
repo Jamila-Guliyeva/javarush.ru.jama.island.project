@@ -1,7 +1,7 @@
 package ru.javarush.jama.island.settings;
 
 import ru.javarush.jama.island.constants.Parameters;
-import ru.javarush.jama.island.entity.OrganismsList;
+import ru.javarush.jama.island.entity.OrganismsType;
 import com.fasterxml.jackson.databind.ObjectReader;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 import java.io.IOException;
@@ -15,13 +15,13 @@ public class GameSettings {
     private int mapRows;
     private int mapCols;
     private int cycleDuration;
-    private Map<OrganismsList, Integer> organismsInitialQuantity;
+    private Map<OrganismsType, Integer> organismsInitialQuantity;
     private Boolean stopOnTimeout;
     private int gameDuration;
-    private Map<OrganismsList, Integer> organismsChildrenQuantity;
-    private Map<OrganismsList, Map<OrganismsList, Integer>> chanceToGetEat;
-    private Map<OrganismsList, Parameters> organismsParameters;
-    private List<OrganismsList> organismsTypes;
+    private Map<OrganismsType, Integer> organismsChildrenQuantity;
+    private Map<OrganismsType, Map<OrganismsType, Integer>> chanceToGetEat;
+    private Map<OrganismsType, Parameters> organismsParameters;
+    private List<OrganismsType> organismsTypes;
     private int initialBirthPercent;
     private int unviableWeightPercent;
     private int animalGrowUpPercent;
@@ -49,7 +49,7 @@ public class GameSettings {
         return mapCols;
     }
 
-    public Map<OrganismsList, Integer> getOrganismsInitialQuantity() {
+    public Map<OrganismsType, Integer> getOrganismsInitialQuantity() {
         return organismsInitialQuantity;
     }
 
@@ -65,23 +65,23 @@ public class GameSettings {
         return gameDuration;
     }
 
-    public Map<OrganismsList, Integer> getOrganismsChildrenQuantity() {
+    public Map<OrganismsType, Integer> getOrganismsChildrenQuantity() {
         return organismsChildrenQuantity;
     }
 
-    public Map<OrganismsList, Map<OrganismsList, Integer>> getChanceToGetEat() {
+    public Map<OrganismsType, Map<OrganismsType, Integer>> getChanceToGetEat() {
         return chanceToGetEat;
     }
 
-    public Map<OrganismsList, Parameters> getOrganismsParameters() {
+    public Map<OrganismsType, Parameters> getOrganismsParameters() {
         return organismsParameters;
     }
 
-    public List<OrganismsList> getOrganismsTypes() {
+    public List<OrganismsType> getOrganismsTypes() {
         return organismsTypes;
     }
 
-    public Parameters getOrganismParametersByType(OrganismsList organismType) {
+    public Parameters getOrganismParametersByType(OrganismsType organismType) {
         return organismsParameters.get(organismType);
     }
 

@@ -1,7 +1,7 @@
 package ru.javarush.jama.island.settings;
 
 import ru.javarush.jama.island.entity.Inhabitant;
-import ru.javarush.jama.island.entity.OrganismsList;
+import ru.javarush.jama.island.entity.OrganismsType;
 import ru.javarush.jama.island.entity.factories.Factories;
 import ru.javarush.jama.island.location.Cell;
 import ru.javarush.jama.island.location.IslandMap;
@@ -29,18 +29,18 @@ public class MapCreator {
 
     private Cell createRandomArea() {
         GameSettings settings = GameSettings.get();
-        Map<OrganismsList, Integer> organismsInitialQuantityMap = settings.getOrganismsInitialQuantity();
+        Map<OrganismsType, Integer> organismsInitialQuantityMap = settings.getOrganismsInitialQuantity();
         int initialBirthPercent = settings.getInitialBirthPercent();
-        Map<OrganismsList, Set<Inhabitant>> inhabitants = new HashMap<>();
+        Map<OrganismsType, Set<Inhabitant>> inhabitants = new HashMap<>();
 
-        for (Map.Entry<OrganismsList, Integer> entry : organismsInitialQuantityMap.entrySet()) {
-            OrganismsList organismType = entry.getKey();
+        for (Map.Entry<OrganismsType, Integer> entry : organismsInitialQuantityMap.entrySet()) {
+            OrganismsType organismType = entry.getKey();
             Integer organismQuantity = entry.getValue();
 
             Set<Inhabitant> organismSet = new HashSet<>();
             for (int i = 0; i < organismQuantity; i++) {
                 if (Randomizer.getProbability(initialBirthPercent)) {
-                    organismSet.add(Factories.createOrganismByType(OrganismsList.valueOf(organismType.toString().toUpperCase(Locale.ROOT))));
+                    organismSet.add(Factories.createOrganismByType(OrganismsType.valueOf(organismType.toString().toUpperCase(Locale.ROOT))));
                 }
             }
             inhabitants.put(organismType, organismSet);
